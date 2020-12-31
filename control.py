@@ -5,6 +5,7 @@ import time
 def readInfo():
     configInfo = open("config.txt", "r")
     period = int(configInfo.readline())
+    return period
 
 
 #Start the pomodoro cicle using the "config.txt" for parameters
