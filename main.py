@@ -1,6 +1,8 @@
 import time
 
-period = 25
+configInfo = open("config.txt", "r")
+
+period = int(configInfo.readline())
 
 while(1):
     time.sleep(1)
