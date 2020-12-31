@@ -10,11 +10,12 @@ class Window(QWidget):
         super().__init__()
         self.setGeometry(100, 100, 400, 250)
         self.setWindowTitle("PSPT")
+
         self.UI()
 
     def UI(self):                             #Defining the widgets inside the window
-        parameter = readInfo()
-        timer = QLabel(""+parameter,self)
+        parameter = control.readInfo()
+        timer = QLabel(str(parameter),self)
         timer.move(100, 50)
         self.show()
 
