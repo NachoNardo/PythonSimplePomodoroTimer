@@ -16,13 +16,25 @@ class Window(QWidget):
     def UI(self):                             #Defining the widgets inside the window
         parameter = control.readInfo()
         timer = QLabel(str(parameter),self)
+        startButton = QPushButton("Start",self)
+        stopButton = QPushButton("Stop",self)
         timer.move(100, 50)
+        startButton.move(150, 50)
+        stopButton.move(150, 100)
         self.show()
+        startButton.clicked.connect(self.start)
+        stopButton.clicked.connect(self.stop)
 
+    def start(self):
+        print("1")
+        pass
+    def stop(self):
+        print("1")
+        pass
 #Starts the application after closing the console
 
 
-def start():
+def run():
     App = QApplication(sys.argv)
     window = Window()
     sys.exit(App.exec_())
