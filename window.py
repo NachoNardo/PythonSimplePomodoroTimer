@@ -1,11 +1,6 @@
 import sys
 from PyQt5.QtWidgets import *
 
-#Created to read the "config.txt" file and set the right amount of minutes,
-#shortbreaks and long breaks
-def readInfo():
-    configInfo = open("config.txt", "r")
-    period = int(configInfo.readline())
 
 #Main Window with the main UI interactions
 class Window(QWidget):
