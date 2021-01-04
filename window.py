@@ -4,16 +4,6 @@ from threading import Thread
 import time
 import os
 
-#Thread used for running the cycle
-class Cycle(Thread):
-    def __init__(self, num):
-        Thread.__init__(self)
-        self.num = num
-
-    def run(self):
-        parameters = readAllInfo()
-        pass
-
 #Main Window with the main UI interactions
 class Window(QWidget):
     def __init__(self):
@@ -21,10 +11,11 @@ class Window(QWidget):
         self.setGeometry(100, 100, 400, 250)
         self.setWindowTitle("PSPT")
         self.UI()
+        state = False
 
     def UI(self):                             #Defining the widgets inside the window
-        parameter = readPeriod()
-        timer = QLabel(str(parameter),self)
+        period = readPeriod()
+        timer = QLabel(str(period),self)
         startButton = QPushButton("Start",self)
         stopButton = QPushButton("Stop",self)
         timer.move(100, 50)
@@ -34,17 +25,21 @@ class Window(QWidget):
         startButton.clicked.connect(self.start)
         stopButton.clicked.connect(self.stop)
 
+    #Starts the pomodoro Cycle
     def start(self):
-        print("1")
-        cycle = Cycle(1)
-        cycle.run()
+        parameters = []
+        parameters = readAllInfo()
+        state = True
+        while(state):
+            self.timer.setText(str(parameters[0]))
+            time.sleep(1)
+            parameters[0] -= 1
+            if (parameters[0]<=0):
+                state = False
         pass
 
     def stop(self):
-        parameter = readPeriod()
-        cycle = Cycle(1)
-        cycle.killed = True
-        print("2")
+        state = False
         pass
 
 #Starts the application after closing the console
