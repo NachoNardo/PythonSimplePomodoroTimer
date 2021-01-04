@@ -29,9 +29,9 @@ class Window(QWidget):
     def start(self):
         parameters = []
         parameters = readAllInfo()
-        state = True
+        self.state = True
         while(state):
-            self.timer.setText(str(parameters[0]))
+            print(parameters[0])
             time.sleep(1)
             parameters[0] -= 1
             if (parameters[0]<=0):
@@ -39,7 +39,7 @@ class Window(QWidget):
         pass
 
     def stop(self):
-        state = False
+        self.state = False
         pass
 
 #Starts the application after closing the console
